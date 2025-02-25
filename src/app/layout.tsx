@@ -4,6 +4,7 @@ import { GeistSans } from "geist/font/sans";
 
 import { ThemeProvider } from "@/components/providers/theme-provider";
 
+import { Toaster } from "sonner";
 import "./globals.css";
 
 /* eslint-disable n/no-process-env */
@@ -33,6 +34,7 @@ export default function RootLayout({
       <body className={GeistSans.className}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           {children}
+          <Toaster />
         </ThemeProvider>
       </body>
     </html>
