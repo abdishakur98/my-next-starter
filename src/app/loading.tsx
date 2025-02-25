@@ -1,13 +1,7 @@
-import { CircularProgress } from "@nextui-org/react";
-
 export default function Loading() {
   return (
-    <CircularProgress
-      className="mx-auto"
-      classNames={{
-        svg: "w-36 h-36",
-      }}
-      aria-label="Loading page..."
-    />
+    <div className="flex h-full items-center justify-center">
+      <div className="h-10 w-10 animate-spin rounded-full border-4 border-blue-500 border-t-transparent"></div>
+    </div>
   );
 }
