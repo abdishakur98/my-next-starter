@@ -1,3 +1,4 @@
+import { FormField } from "@/components/form-field"
 import { Button } from "@/components/ui/button"
 import {
     Card,
@@ -6,15 +7,22 @@ import {
     CardHeader,
     CardTitle,
 } from "@/components/ui/card"
-import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { cn } from "@/lib/utils"
 import Link from "next/link"
+import { useForm } from "react-hook-form"
 
 export function LoginForm({
     className,
     ...props
 }: React.ComponentPropsWithoutRef<"div">) {
+    const { register, handleSubmit, formState: { errors } } = useForm()
+
+    const onSubmit = (data: any) => {
+        console.log(data)
+        // Handle login logic here
+    }
+
     return (
         <div className={cn("flex flex-col gap-6", className)} {...props}>
             <Card>
@@ -25,17 +33,15 @@ export function LoginForm({
                     </CardDescription>
                 </CardHeader>
                 <CardContent>
-                    <form>
+                    <form onSubmit={handleSubmit(onSubmit)}>
                         <div className="flex flex-col gap-6">
-                            <div className="grid gap-2">
-                                <Label htmlFor="email">Email</Label>
-                                <Input
-                                    id="email"
-                                    type="email"
-                                    placeholder="m@example.com"
-                                    required
-                                />
-                            </div>
+                            <FormField
+                                label="Email"
+                                type="email"
+                                placeholder="m@example.com"
+                                errors={errors}
+                                name="email"
+                            />
                             <div className="grid gap-2">
                                 <div className="flex items-center">
                                     <Label htmlFor="password">Password</Label>
@@ -46,7 +52,13 @@ export function LoginForm({
                                         Forgot your password?
                                     </Link>
                                 </div>
-                                <Input id="password" type="password" required />
+                                <FormField
+                                    label="Password"
+                                    type="password"
+                                    placeholder=""
+                                    errors={errors}
+                                    name="password"
+                                />
                             </div>
                             <Button type="submit" className="w-full">
                                 Login

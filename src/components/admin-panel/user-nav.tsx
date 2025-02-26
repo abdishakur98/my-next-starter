@@ -71,8 +71,10 @@ export function UserNav() {
         </DropdownMenuGroup>
         <DropdownMenuSeparator />
         <DropdownMenuItem className="hover:cursor-pointer" onClick={() => { }}>
-          <LogOut className="mr-3 h-4 w-4 text-muted-foreground" />
-          Sign out
+          <Link href="/login" className="flex items-center">
+            <LogOut className="mr-3 h-4 w-4 text-muted-foreground" />
+            Sign out
+          </Link>
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>

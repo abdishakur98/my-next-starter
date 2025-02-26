@@ -127,14 +127,14 @@ export function Menu({ isOpen }: MenuProps) {
                     <span className={cn(isOpen === false ? "" : "mr-4")}>
                       <LogOut size={18} />
                     </span>
-                    <p
+                    <Link href="/login"
                       className={cn(
                         "whitespace-nowrap",
                         isOpen === false ? "hidden opacity-0" : "opacity-100"
                       )}
                     >
                       Sign out
-                    </p>
+                    </Link>
                   </Button>
                 </TooltipTrigger>
                 {isOpen === false && (

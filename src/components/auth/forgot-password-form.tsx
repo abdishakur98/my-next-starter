@@ -1,3 +1,4 @@
+import { FormField } from "@/components/form-field"
 import { Button } from "@/components/ui/button"
 import {
     Card,
@@ -7,8 +8,6 @@ import {
     CardHeader,
     CardTitle,
 } from "@/components/ui/card"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
 import { cn } from "@/lib/utils"
 import Link from "next/link"
 
@@ -28,15 +27,13 @@ export function ForgotPasswordForm({
                 <CardContent>
                     <form>
                         <div className="flex flex-col gap-6">
-                            <div className="grid gap-2">
-                                <Label htmlFor="email">Email</Label>
-                                <Input
-                                    id="email"
-                                    type="email"
-                                    placeholder="m@example.com"
-                                    required
-                                />
-                            </div>
+                            <FormField
+                                label="Email"
+                                type="email"
+                                placeholder="m@example.com"
+                                errors={{}}
+                                name="email"
+                            />
                             <Button type="submit" className="w-full">
                                 Send Reset Link
                             </Button>

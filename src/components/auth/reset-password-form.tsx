@@ -1,5 +1,6 @@
 "use client"
 
+import { FormField } from "@/components/form-field"
 import { Button } from "@/components/ui/button"
 import {
     Card,
@@ -9,8 +10,6 @@ import {
     CardHeader,
     CardTitle,
 } from "@/components/ui/card"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
 import { cn } from "@/lib/utils"
 import Link from "next/link"
 import { useSearchParams } from "next/navigation"
@@ -64,31 +63,21 @@ export function ResetPasswordForm({
                         <div className="flex flex-col gap-6">
                             <input type="hidden" name="token" value={token} />
 
-                            <div className="grid gap-2">
-                                <Label htmlFor="password">New Password</Label>
-                                <Input
-                                    id="password"
-                                    type="password"
-                                    value={password}
-                                    onChange={(e) => setPassword(e.target.value)}
-                                    required
-                                    minLength={8}
-                                />
-                                <p className="text-xs text-muted-foreground">
-                                    Must be at least 8 characters
-                                </p>
-                            </div>
+                            <FormField
+                                label="New Password"
+                                type="password"
+                                placeholder="Must be at least 8 characters"
+                                errors={{}}
+                                name="password"
+                            />
 
-                            <div className="grid gap-2">
-                                <Label htmlFor="passwordConfirm">Confirm Password</Label>
-                                <Input
-                                    id="passwordConfirm"
-                                    type="password"
-                                    value={passwordConfirm}
-                                    onChange={(e) => setPasswordConfirm(e.target.value)}
-                                    required
-                                />
-                            </div>
+                            <FormField
+                                label="Confirm Password"
+                                type="password"
+                                placeholder="Must be at least 8 characters"
+                                errors={{}}
+                                name="passwordConfirm"
+                            />
 
                             {error && (
                                 <div className="text-sm font-medium text-destructive">
